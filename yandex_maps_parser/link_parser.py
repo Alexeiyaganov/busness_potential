@@ -107,9 +107,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
     type_org = args.type_org
 
-    for type_org in ['build']:
-        for district in ['Алания']:
+    for type_org in ['cafe']:
+        for district in ['Ступино']:
             sleep(1)
             driver = webdriver.Chrome("/usr/bin/chromedriver")
             grabber = LinksCollector(driver)
-            grabber.run(city="Турция", district=district, type_org_ru=type_org_mapping[type_org], type_org=type_org)
+            grabber.run(city="Россия", district=district, type_org_ru=type_org_mapping[type_org], type_org=type_org)
