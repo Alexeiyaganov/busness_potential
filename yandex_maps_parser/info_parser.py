@@ -7,6 +7,7 @@ from time import sleep
 
 import pandas as pd
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager  #добавил
 from bs4 import BeautifulSoup
 
 from soup_parser import SoupContentParser
@@ -54,7 +55,7 @@ class Parser:
                     df.to_csv(f'result_output/{type_org}_outputs.csv')
                     self.driver.quit()
                     sleep(random.uniform(2.2, 2.4))
-                    self.driver = webdriver.Safari()
+                    self.driver = webdriver.Chrome() #Safari()
                     self.driver.maximize_window()
                     self.driver.get('https://yandex.ru/maps')
                     parent_handle = self.driver.window_handles[0]
@@ -67,7 +68,7 @@ class Parser:
                 print('except')
                 # driver.quit()
                 sleep(random.uniform(2.2, 2.4))
-                self.driver = webdriver.Safari()
+                self.driver = webdriver.Chrome() #Safari()
                 self.driver.maximize_window()
                 self.driver.get('https://yandex.ru/maps')
                 parent_handle = self.driver.window_handles[0]
@@ -91,6 +92,7 @@ if __name__ == "__main__":
     print('all_hrefs', len(all_hrefs))
 
 
-    driver = webdriver.Safari()
+#     driver = webdriver.Chrome() #Safari()
+    driver = webdriver.Chrome(ChromeDriverManager().install())
     parser = Parser(driver)
     parser.parse_data(all_hrefs, type_org)

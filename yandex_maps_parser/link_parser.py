@@ -5,9 +5,17 @@ import argparse
 from time import sleep
 
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver import ActionChains
 
 from utils.constants import districts, ACCEPT_BUTTON, type_org_mapping
+
+
+option = webdriver.ChromeOptions()
+option.add_argument("start-maximized")
+
 
 class LinksCollector:
 
@@ -93,6 +101,7 @@ class LinksCollector:
 
 
 if __name__ == "__main__":
+    
     parser = argparse.ArgumentParser()
     parser.add_argument("type_org", help="organization type")
     args = parser.parse_args()
@@ -101,7 +110,6 @@ if __name__ == "__main__":
     for type_org in ['build']:
         for district in ['Алания']:
             sleep(1)
-            driver = webdriver.Safari()
+            driver = webdriver.Chrome("/usr/bin/chromedriver")
             grabber = LinksCollector(driver)
             grabber.run(city="Турция", district=district, type_org_ru=type_org_mapping[type_org], type_org=type_org)
-
