@@ -9,3 +9,9 @@ pyyaml
 pytest
 pytest-dependency
 pre-commit
+osmnx
+geojson
+h3
+contextily
+folium
+plotly

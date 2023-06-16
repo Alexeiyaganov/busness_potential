@@ -11,6 +11,10 @@ Project created with MLOps-Template cookiecutter. For more info: https://mlopsst
 
 ## 🏃🏻 Running Project
 
+
+pip install -r requirements.txt
+
+
 ### 🔑 Setup IBM Bucket Credentials for IBM COS
 
 #### MacOS and Linux
